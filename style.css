@@ -33,7 +33,7 @@ body {
   font-weight: bold;
   font-size: 20px;
   color: white;
-   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+   text-shadow: 2px 2px 6px rgba(38, 197, 7, 0.7);
 }
 
 .navbar {
@@ -53,7 +53,7 @@ body {
 .logo {
   font-weight: bold;
   font-size: 20px;
-  color: #28a745; 
+  color: #f8fffa; 
 }
 
 .nav-links {
@@ -64,7 +64,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #28a745;
+  color: #e5ece7;
   font-weight: 500;
   padding: 6px 12px;
   border: 2px solid #28a745;    
@@ -74,7 +74,7 @@ body {
 }
 
 .nav-links a:hover {
-  background-color: #28a745;
+  background-color: #10a332;
   color: white;
 }
 .hero {
