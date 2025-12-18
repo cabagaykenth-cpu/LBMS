@@ -6,11 +6,12 @@
   <title>About Us</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100">
 
   <!-- Navbar -->
   <nav class="bg-green-700 text-white p-4 fixed w-full top-0 shadow z-50">
-    <div class="max-w-6xl mx-auto flex justify-between">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
       <div class="font-bold text-lg">LiveStock Breeding Monitoring</div>
       <ul class="flex gap-4">
         <li><a href="index.html" class="hover:underline">Home</a></li>
@@ -21,11 +22,94 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="text-center bg-green-600 text-white py-16 mt-16">
     <h1 class="text-3xl md:text-4xl font-bold">About Us</h1>
-    <p class="mt-2 max-w-2xl mx-auto">This system helps farmers and breeders monitor livestock breeding in real-time, keep records, and maintain healthy animal management.</p>
+    <p class="mt-2 max-w-2xl mx-auto">
+      This system helps farmers and breeders monitor livestock breeding in real-time,
+      keep records, and maintain healthy animal management.
+    </p>
   </section>
+
+  <section class="bg-gray-200 py-12">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-green-700 mb-8">
+        What Our System Offers
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Breeding Monitoring</h3>
+          <p class="text-gray-600">
+            Track breeding schedules, mating history, and pregnancy records to ensure
+            successful reproduction.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Health & Mortality Records</h3>
+          <p class="text-gray-600">
+            Record animal health conditions and monitor deceased animals for better
+            analysis and prevention.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Accurate Data Management</h3>
+          <p class="text-gray-600">
+            Maintain organized records that help farmers make informed decisions
+            and improve farm productivity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner Section -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="bg-white p-8 rounded-lg shadow">
+      <h2 class="text-2xl font-bold text-green-700 mb-4 text-center">
+        Owner Information
+      </h2>
+
+      <p class="text-gray-700 text-center max-w-3xl mx-auto leading-relaxed">
+        This system is owned and managed by a livestock farm operator committed to
+        improving animal care and farm efficiency through the use of modern technology.
+      </p>
+
+      <button onclick="showDetails()"
+        class="mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">
+        Show More Details
+      </button>
+
+      <p id="moreDetails" class="text-gray-700 mt-4 max-w-3xl mx-auto leading-relaxed hidden">
+        The owner has over 10 years of experience in livestock management and has implemented modern digital solutions to streamline farm operations, ensuring healthier animals and increased productivity.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="bg-white p-8 rounded-lg shadow text-center">
+      <h2 class="text-2xl font-bold text-green-700 mb-4">About the System</h2>
+      <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        The LiveStock Breeding Monitoring System is designed for farmers, farm managers,
+        and agricultural organizations who want a simple yet effective tool to manage
+        livestock records and monitor breeding activities.
+      </p>
+    </div>
+  </section>
+
+  <footer class="bg-green-700 text-white py-4">
+    <div class="text-center text-sm">
+      © 2025 LiveStock Breeding Monitoring System. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    function showDetails() {
+      const details = document.getElementById("moreDetails");
+      details.classList.toggle("hidden");
+    }
+  </script>
 
 </body>
 </html>

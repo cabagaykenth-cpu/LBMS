@@ -6,6 +6,7 @@
   <title>Died Animals</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100">
 
   <!-- Navbar -->
@@ -21,13 +22,36 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Header -->
   <section class="text-center bg-green-600 text-white py-16 mt-16">
     <h1 class="text-3xl md:text-4xl font-bold">Died Animals Records</h1>
     <p class="mt-2">Overview of animals that died in the farm.</p>
   </section>
 
-  <!-- Died Animals Table -->
+  <!-- Add / Edit Record Form -->
+  <section class="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow">
+    <h2 class="text-xl font-bold mb-4 text-green-700">Add / Edit Record</h2>
+
+    <input type="hidden" id="editIndex">
+
+    <div class="grid md:grid-cols-3 gap-4">
+      <input id="animalType" type="text" placeholder="Animal Type"
+        class="border p-2 rounded w-full">
+
+      <input id="quantity" type="number" placeholder="Quantity"
+        class="border p-2 rounded w-full">
+
+      <input id="dateRecorded" type="date"
+        class="border p-2 rounded w-full">
+    </div>
+
+    <button onclick="saveRecord()"
+      class="mt-4 bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800">
+      Save Record
+    </button>
+  </section>
+
+  <!-- Table -->
   <section class="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow">
     <table class="min-w-full border border-gray-300">
       <thead class="bg-green-100">
@@ -35,22 +59,89 @@
           <th class="border px-4 py-2">Animal Type</th>
           <th class="border px-4 py-2">Quantity</th>
           <th class="border px-4 py-2">Date Recorded</th>
+          <th class="border px-4 py-2">Action</th>
         </tr>
       </thead>
-      <tbody class="text-center">
+      <tbody id="tableBody" class="text-center">
         <tr>
           <td class="border px-4 py-2">Cattle</td>
           <td class="border px-4 py-2">2</td>
           <td class="border px-4 py-2">2025-12-02</td>
+          <td class="border px-4 py-2">
+            <button onclick="editRecord(this)"
+              class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+              Edit
+            </button>
+          </td>
         </tr>
         <tr>
           <td class="border px-4 py-2">Sheep</td>
           <td class="border px-4 py-2">1</td>
           <td class="border px-4 py-2">2025-12-05</td>
+          <td class="border px-4 py-2">
+            <button onclick="editRecord(this)"
+              class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+              Edit
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
   </section>
+
+  <!-- JavaScript -->
+  <script>
+    function saveRecord() {
+      const animalType = document.getElementById("animalType").value;
+      const quantity = document.getElementById("quantity").value;
+      const dateRecorded = document.getElementById("dateRecorded").value;
+      const editIndex = document.getElementById("editIndex").value;
+      const tableBody = document.getElementById("tableBody");
+
+      if (animalType === "" || quantity === "" || dateRecorded === "") {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      if (editIndex === "") {
+        // ADD new record
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+          <td class="border px-4 py-2">${animalType}</td>
+          <td class="border px-4 py-2">${quantity}</td>
+          <td class="border px-4 py-2">${dateRecorded}</td>
+          <td class="border px-4 py-2">
+            <button onclick="editRecord(this)"
+              class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+              Edit
+            </button>
+          </td>
+        `;
+      } else {
+        // UPDATE existing record
+        const row = tableBody.rows[editIndex];
+        row.cells[0].innerText = animalType;
+        row.cells[1].innerText = quantity;
+        row.cells[2].innerText = dateRecorded;
+        document.getElementById("editIndex").value = "";
+      }
+
+      // Clear form
+      document.getElementById("animalType").value = "";
+      document.getElementById("quantity").value = "";
+      document.getElementById("dateRecorded").value = "";
+    }
+
+    function editRecord(button) {
+      const row = button.parentElement.parentElement;
+      const index = row.rowIndex - 1;
+
+      document.getElementById("animalType").value = row.cells[0].innerText;
+      document.getElementById("quantity").value = row.cells[1].innerText;
+      document.getElementById("dateRecorded").value = row.cells[2].innerText;
+      document.getElementById("editIndex").value = index;
+    }
+  </script>
 
 </body>
 </html>
